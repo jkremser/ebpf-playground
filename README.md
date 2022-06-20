@@ -83,9 +83,15 @@ limactl shell ebpf2 bash -c 'sudo env "PATH=$PATH" bee run ghcr.io/solo-io/bumbl
 
 ```bash
 limactl shell ebpf2 bash -c 'curl v2d.wttr.in/Brno'
+limactl shell ebpf2 bash -c 'dig @1.1.1.1 google.com +tcp +short'
+
+# this will fly under the radar (udp)
+limactl shell ebpf2 bash -c 'dig @8.8.4.4 google.com +short'
 ```
 
-profit!
+## profit!
+
+![screenshot](screen.png)
 
 ```bash
 limactl delete ebpf2 -f
