@@ -1,4 +1,4 @@
-# hello eBPF
+# hello eBPF (on Mac)
 
 ## start a linux vm (Alpine by default)
 
@@ -63,7 +63,7 @@ cat <<EOF | limactl shell ebpf2 bash
 
     # dev tools:
     apt-get -qq install -y golang make
-    usermod -aG docker vagrant
+
     # add headers:
     bpftool btf dump file /sys/kernel/btf/vmlinux format c > /usr/local/include/vmlinux.h
     cp /source/builder/solo_types.h /usr/local/include/
