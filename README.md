@@ -55,18 +55,17 @@ cat <<EOF | limactl shell ebpf2 bash
     # install llvm (source: https://github.com/solo-io/bumblebee/blob/main/Vagrantfile#L11)
     export DEBIAN_FRONTEND=noninteractive
     export LLVM_VERSION=13
-    curl -skL https://apt.llvm.org/llvm.sh "$LLVM_VERSION" | bash
+    curl -skL https://apt.llvm.org/llvm.sh "\$LLVM_VERSION" | bash
     apt-get -qq update
 
     # bpf related deps:
-    apt-get -qq install linux-headers-$(uname -r) linux-tools-$(uname -r) libbpf-dev
+    apt-get -qq install linux-headers-\$(uname -r) linux-tools-\$(uname -r) libbpf-dev
 
     # dev tools:
     apt-get -qq install -y golang make
 
     # add headers:
     bpftool btf dump file /sys/kernel/btf/vmlinux format c > /usr/local/include/vmlinux.h
-    cp /source/builder/solo_types.h /usr/local/include/
     curl -skLo /usr/local/include/solo_types.h https://raw.githubusercontent.com/solo-io/bumblebee/main/builder/solo_types.h
 EOF
 ```
@@ -87,3 +86,7 @@ limactl shell ebpf2 bash -c 'curl v2d.wttr.in/Brno'
 ```
 
 profit!
+
+```bash
+limactl delete ebpf2 -f
+```
