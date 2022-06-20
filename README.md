@@ -28,7 +28,7 @@ colima -p ebpf ssh -- curl v2d.wttr.in/Brno
 This call was not caught because the Linux VM doesn't have the BTF enabled.
 https://nakryiko.com/posts/bpf-portability-and-co-re/
 
-Alpine lacks support for BTF related tools - https://gitlab.alpinelinux.org/alpine/aports/-/issues/13761 so let's use some other distro.
+Alpine [lacks support](https://gitlab.alpinelinux.org/alpine/aports/-/issues/13761) for BTF related tools so let's use some other distro that is [supported](https://github.com/aquasecurity/btfhub/blob/main/docs/supported-distros.md).
 
 ```bash
 colima stop -p ebpf 
